@@ -83,7 +83,6 @@ import org.araport.stock.tasklet.business.DbXrefPrimaryStockAccessionsPostLoadTa
 import org.araport.stock.tasklet.business.GeneralModuleInitTasklet;
 import org.araport.stock.tasklet.business.StockPostLoadingTasklet;
 import org.araport.stock.tasklet.business.StockPropertiesCVTermLookupTasklet;
-import org.araport.stock.tasklet.data.download.ImportOracleDataToPostgresTasklet;
 import org.araport.stock.tasklet.staging.BatchSchemaInitTasklet;
 import org.araport.stock.tasklet.staging.StageDbXrefExistingStockAccessionsTasklet;
 import org.araport.stock.tasklet.staging.StagingSchemaInitTasklet;
@@ -291,12 +290,7 @@ public class LoadStocksJobBatchConfiguration {
 	//Organism Tasklet
 	@Autowired
 	BulkLoadOrganismTasklet bulkLoadOrganismTasklet;
-	
-	//Import Oracle Data Tasklet
-	@Autowired
-	ImportOracleDataToPostgresTasklet importOracleDataToPostgresTasklet;
-	
-
+		
 	@Autowired
 	private TaskExecutor taskExecutor;
 
@@ -562,14 +556,6 @@ public class LoadStocksJobBatchConfiguration {
 
 	}
 	
-	@Bean
-	public Step oracleDataLoadingStep() {
-
-		return stepBuilders.get(ORACLE_DATA_LOADING_STEP)
-				.tasklet(importOracleDataToPostgresTasklet).build();
-
-	}
-
 	@Bean
 	public ItemWriter<DbXref> writer() {
 		return new DbXrefItemWriter();

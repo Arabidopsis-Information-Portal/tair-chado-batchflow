@@ -11,7 +11,6 @@ import org.araport.stock.tasklet.business.BulkLoadStockSynonymsTasklet;
 import org.araport.stock.tasklet.business.GeneralModuleInitTasklet;
 import org.araport.stock.tasklet.business.DbXrefPrimaryStockAccessionsPostLoadTasklet;
 import org.araport.stock.tasklet.business.StockPostLoadingTasklet;
-import org.araport.stock.tasklet.data.download.ImportOracleDataToPostgresTasklet;
 import org.araport.stock.tasklet.staging.*;
 import org.springframework.context.annotation.Bean;
 
@@ -56,11 +55,6 @@ public class FlowBeans {
 	@Bean
 	public BulkLoadOrganismTasklet bulkLoadOrganismTasklet(){
 		return new BulkLoadOrganismTasklet();
-	}
-	
-	@Bean
-	public ImportOracleDataToPostgresTasklet importOracleDataToPostgresTasklet(){
-		return new ImportOracleDataToPostgresTasklet();
 	}
 	
 	
